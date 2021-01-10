@@ -33,7 +33,10 @@ if (isTesting || isDev) {
 
 // when serving (devmode) enable hot reloading
 if (isDev && isServing) {
-  require('electron-reload')(__dirname, {});
+  console.log(__dirname);
+  require('electron-reload')(__dirname, {
+    electron: path.join(__dirname, 'node_modules', '.bin', 'electron.cmd')
+  });
 }
 
 const createSplashScreen = function () {
@@ -229,7 +232,7 @@ const createAppMenu = function () {
   });
 
   menu.push({
-    label: 'Import/export',
+    label: 'Import/Export',
     submenu: [
       {
         label: "Mockoon's format",
